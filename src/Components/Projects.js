@@ -9,8 +9,7 @@ const Projects = () => {
 
   useEffect(() => {
     // axios.get(`${window.location.origin}/api/projects`)
-    axios.get('saurabh-website-api.vercel.app/api/projects')
-    
+    axios.get('https://saurabh-website-api.vercel.app/api/projects')
       .then(response => setProjects(response.data))
       .catch(error => console.error(error));
   }, []);
