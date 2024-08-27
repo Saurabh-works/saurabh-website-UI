@@ -31,7 +31,7 @@ const ProjectForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // axios.post(`${window.location.origin}/api/projects`, form)
-    axios.post('saurabh-website-api.vercel.app/api/projects', form)
+    axios.post('https://saurabh-website-api.vercel.app/api/projects', form)
       .then(response => {
         console.log('Project added:', response.data);
         setForm({

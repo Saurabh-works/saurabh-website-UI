@@ -41,7 +41,7 @@ const Contact = () => {
     event.preventDefault();
     try {
       // const response = await axios.post(`${window.location.origin}/api/contact`, form);
-      const response = await axios.post('saurabh-website-api.vercel.app/api/contact', form);
+      const response = await axios.post('https://saurabh-website-api.vercel.app/api/contact', form);
       if (response.status === 201) {
         setSuccess(true);
         handleClear();

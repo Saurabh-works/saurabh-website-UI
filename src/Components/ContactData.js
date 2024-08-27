@@ -17,7 +17,7 @@ const ContactData = () => {
   const fetchContacts = async () => {
     try {
       // const response = await axios.get(`${window.location.origin}/api/contact`);
-      const response = await axios.get('saurabh-website-api.vercel.app/api/contact');
+      const response = await axios.get('https://saurabh-website-api.vercel.app/api/contact');
       setContacts(response.data);
     } catch (error) {
       console.error('Error fetching contacts:', error);
@@ -27,7 +27,7 @@ const ContactData = () => {
   const handleDelete = async (id) => {
     try {
       // await axios.delete(`${window.location.origin}/api/contact/${id}`);
-      await axios.delete(`saurabh-website-api.vercel.app/api/contact/${id}`);
+      await axios.delete(`https://saurabh-website-api.vercel.app/api/contact/${id}`);
       fetchContacts(); // Refresh the list after deletion
       setSnackbarMessage('Contact deleted successfully!');
       setSnackbarSeverity('success');

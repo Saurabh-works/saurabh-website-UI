@@ -21,7 +21,7 @@ const ProjectTable = () => {
 
     useEffect(() => {
         // axios.get(`${window.location.origin}/api/projects`)
-        axios.get(`saurabh-website-api.vercel.app/api/projects`)
+        axios.get(`https://saurabh-website-api.vercel.app/api/projects`)
             .then(response => setProjects(response.data))
             .catch(error => {
                 console.error(error);
@@ -45,7 +45,7 @@ const ProjectTable = () => {
 
     const handleDelete = (id) => {
         // axios.delete(`${window.location.origin}/api/projects/${id}`)
-        axios.delete(`saurabh-website-api.vercel.app/api/projects/${id}`)
+        axios.delete(`https://saurabh-website-api.vercel.app/api/projects/${id}`)
             .then(() => {
                 setProjects(projects.filter(project => project._id !== id));
                 setSnackbarMessage('Project deleted successfully!');
@@ -62,7 +62,7 @@ const ProjectTable = () => {
 
     const handleUpdate = () => {
         // axios.put(`${window.location.origin}/api/projects/${editId}`, form)
-        axios.put(`saurabh-website-api.vercel.app/api/projects/${editId}`, form)
+        axios.put(`https://saurabh-website-api.vercel.app/api/projects/${editId}`, form)
             .then(response => {
                 setProjects(projects.map(project => (project._id === editId ? response.data : project)));
                 setEditId(null);
