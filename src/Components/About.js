@@ -35,7 +35,7 @@ const About = () => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '100vh',
+        // minHeight: '100vh',
         padding: '40px 0',
       }}
     >
