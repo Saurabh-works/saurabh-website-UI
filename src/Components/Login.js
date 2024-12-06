@@ -137,7 +137,7 @@ const Login = () => {
                     color: "#bbb", // Label color
                   },
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "orange", // Label color when focused
+                    color: "white", // Label color when focused
                   },
                 }}
               />
@@ -170,7 +170,7 @@ const Login = () => {
                     color: "#bbb", // Label color
                   },
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "orange", // Label color when focused
+                    color: "white", // Label color when focused
                   },
                 }}
               />
