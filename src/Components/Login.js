@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -12,40 +12,52 @@ import {
   Alert as MuiAlert,
   useMediaQuery,
   Avatar,
-} from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { motion } from 'framer-motion';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { motion } from "framer-motion";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const backgroundImage = require("../Image/dark-background-.png");
 
 const Login = () => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(null);
   const navigate = useNavigate();
   const theme = useTheme();
 
-  const isXs = useMediaQuery(theme.breakpoints.down('xs'));
-  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       // const response = await axios.post(`${window.location.origin}/api/login`, { id, password });
-      const response = await axios.post('https://saurabh-website-api.vercel.app/api/login', { id, password });
+      const response = await axios.post(
+        "https://saurabh-website-api.vercel.app/api/login",
+        { id, password }
+      );
       if (response.data.success) {
-        setAlert({ message: "Login Successful.. Welcome Saurabh...!", severity: "success" });
+        setAlert({
+          message: "Login Successful.. Welcome Saurabh...!",
+          severity: "success",
+        });
         setTimeout(() => {
           navigate("/update");
         }, 2000);
       } else {
-        setAlert({ message: "Invalid credentials, please try again.", severity: "error" });
+        setAlert({
+          message: "Invalid credentials, please try again.",
+          severity: "error",
+        });
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      setAlert({ message: "An error occurred during login.", severity: "error" });
+      console.error("Error during login:", error);
+      setAlert({
+        message: "An error occurred during login.",
+        severity: "error",
+      });
     }
   };
 
@@ -56,42 +68,42 @@ const Login = () => {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        padding: isXs ? '0 10px' : '0', // Horizontal padding for extra-small devices
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        padding: isXs ? "0 10px" : "0", // Horizontal padding for extra-small devices
       }}
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <Card
           sx={{
             width: isXs ? "100%" : isSm ? 300 : 350,
-            bgcolor: '#252729',
-            color: '#fff',
+            bgcolor: "#252729",
+            color: "#fff",
             borderRadius: 3,
             boxShadow: 3,
-            padding: isXs ? '20px' : isSm ? '20px' : '30px',
-            margin: isXs ? '10px' : 'auto', // Add margin for extra-small devices
+            padding: isXs ? "20px" : isSm ? "20px" : "30px",
+            margin: isXs ? "10px" : "auto", // Add margin for extra-small devices
           }}
         >
-          <CardContent sx={{ textAlign: 'center' }}>
-            <Avatar sx={{ margin: '0 auto', bgcolor: 'orange' }}>
+          <CardContent sx={{ textAlign: "center" }}>
+            <Avatar sx={{ margin: "0 auto", bgcolor: "orange" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography 
-              variant="h5" 
-              sx={{ 
-                marginTop: 2, 
-                marginBottom: 3, 
-                fontSize: isXs ? '20px' : isSm ? '22px' : '24px' 
+            <Typography
+              variant="h5"
+              sx={{
+                marginTop: 2,
+                marginBottom: 3,
+                fontSize: isXs ? "20px" : isSm ? "22px" : "24px",
               }}
             >
               Login
@@ -106,9 +118,27 @@ const Login = () => {
                 required
                 sx={{
                   marginBottom: 2,
-                  input: { color: '#fff' },
-                  label: { color: '#bbb' },
-                  fontSize: isXs ? '10px' : '16px',
+                  input: { color: "#fff" }, // Text color
+                  label: { color: "#bbb" }, // Label color
+                  "& .MuiFilledInput-root": {
+                    backgroundColor: "#333", // Input background color
+                    color: "#fff", // Text color in the input field
+                    ":hover": {
+                      backgroundColor: "#444", // Background color on hover
+                    },
+                    ":before": {
+                      borderBottomColor: "#555", // Default underline color
+                    },
+                    ":after": {
+                      borderBottomColor: "orange", // Focused underline color
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: "#bbb", // Label color
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "orange", // Label color when focused
+                  },
                 }}
               />
               <TextField
@@ -121,23 +151,41 @@ const Login = () => {
                 required
                 sx={{
                   marginBottom: 2,
-                  input: { color: '#fff' },
-                  label: { color: '#bbb' },
-                  fontSize: isXs ? '10px' : '16px',
+                  input: { color: "#fff" }, // Text color
+                  label: { color: "#bbb" }, // Label color
+                  "& .MuiFilledInput-root": {
+                    backgroundColor: "#333", // Input background color
+                    color: "#fff", // Text color in the input field
+                    ":hover": {
+                      backgroundColor: "#444", // Background color on hover
+                    },
+                    ":before": {
+                      borderBottomColor: "#555", // Default underline color
+                    },
+                    ":after": {
+                      borderBottomColor: "orange", // Focused underline color
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: "#bbb", // Label color
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "orange", // Label color when focused
+                  },
                 }}
               />
               <Button
                 type="submit"
-                variant="outlined" 
+                variant="outlined"
                 color="secondary"
                 fullWidth
                 sx={{
-                  bgcolor: '#252729',
-                  color:"white",
-                  borderColor: 'orange',
-                  ':hover': { bgcolor: '#343638', borderColor:"orange" },
-                  fontSize: isXs ? '10px' : '16px',
-                  padding: isXs ? '6px' : '12px',
+                  bgcolor: "#252729",
+                  color: "white",
+                  borderColor: "orange",
+                  ":hover": { bgcolor: "#343638", borderColor: "orange" },
+                  fontSize: isXs ? "10px" : "16px",
+                  padding: isXs ? "6px" : "12px",
                 }}
               >
                 Submit
@@ -152,9 +200,13 @@ const Login = () => {
           open={!!alert}
           autoHideDuration={8000}
           onClose={handleCloseAlert}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <MuiAlert onClose={handleCloseAlert} severity={alert.severity} sx={{ width: '100%' }}>
+          <MuiAlert
+            onClose={handleCloseAlert}
+            severity={alert.severity}
+            sx={{ width: "100%" }}
+          >
             {alert.message}
           </MuiAlert>
         </Snackbar>
